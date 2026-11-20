@@ -1,0 +1,672 @@
+:root {
+  --red: #b3262e;
+  --red-dark: #8e1c23;
+  --green: #1f6f43;
+  --green-dark: #154d2f;
+  --cream: #fbf7f0;
+  --text: #2a2a2a;
+
+  /* Holly sprig: two leaves and three berries, tiled along the garland */
+  --holly: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='40' viewBox='0 0 72 40'%3E%3Cpath d='M36 20 C29 11 17 9 5 12 C10 15 7 18 11 20 C7 22 10 25 5 28 C17 31 29 29 36 20Z' fill='%23236b3a' stroke='%23154d2f' stroke-width='1'/%3E%3Cpath d='M36 20 C43 11 55 9 67 12 C62 15 65 18 61 20 C65 22 62 25 67 28 C55 31 43 29 36 20Z' fill='%232e8049' stroke='%23154d2f' stroke-width='1'/%3E%3Cpath d='M8 20 L34 20 M38 20 L64 20' stroke='%2367a873' stroke-width='1'/%3E%3Ccircle cx='32' cy='16' r='4' fill='%23c62828' stroke='%238e1c23'/%3E%3Ccircle cx='40' cy='16' r='4' fill='%23d32f2f' stroke='%238e1c23'/%3E%3Ccircle cx='36' cy='23' r='4' fill='%23c62828' stroke='%238e1c23'/%3E%3Ccircle cx='31' cy='15' r='1.2' fill='%23ffcdd2'/%3E%3Ccircle cx='39' cy='15' r='1.2' fill='%23ffcdd2'/%3E%3Ccircle cx='35' cy='22' r='1.2' fill='%23ffcdd2'/%3E%3C/svg%3E");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+}
+
+/* Candy cane header: diagonal red and white stripes */
+header {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--red) 0 24px,
+    #ffffff 24px 48px
+  );
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* Solid plaque so the title stays readable over the stripes */
+header h1 {
+  display: inline-block;
+  margin: 0;
+  padding: 0.6rem 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  background: var(--red);
+  border: 4px solid #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Green line with a holly garland running along it */
+.garland {
+  height: 40px;
+  margin-top: -20px; /* tuck the leaves up over the edge of the stripes */
+  position: relative;
+  background:
+    var(--holly) repeat-x center / 72px 40px,
+    linear-gradient(
+      transparent 15px,
+      var(--green-dark) 15px 17px,
+      var(--green) 17px 23px,
+      var(--green-dark) 23px 25px,
+      transparent 25px
+    );
+}
+
+/* ---------- Page content ---------- */
+
+.container {
+  max-width: 760px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1rem;
+}
+
+.card {
+  background: #fff;
+  border: 3px solid var(--green);
+  border-radius: 18px;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 9px var(--red), 0 10px 24px rgba(0, 0, 0, 0.12);
+  padding: 1.75rem;
+  margin: 12px;
+}
+
+.card h2 {
+  margin: 0.25rem 0 0.5rem;
+  color: var(--red);
+  font-size: 1.6rem;
+}
+
+.card p {
+  line-height: 1.5;
+}
+
+.hint {
+  color: #5c5c5c;
+  margin-top: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.08s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--red);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--red-dark);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #eef6f0;
+}
+
+.btn-add {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  background: #f3f8f4;
+  color: var(--green);
+  border: 2px dashed var(--green);
+  border-radius: 12px;
+}
+
+.btn-add:hover {
+  background: #e4f1e7;
+}
+
+.btn-small {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.btn-small.btn-primary {
+  box-shadow: none;
+}
+
+.link-btn {
+  font: inherit;
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--green);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #f2b705;
+  outline-offset: 2px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.nav-msg {
+  min-height: 1.2em;
+  margin: 0.75rem 0 0;
+  color: var(--red);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ---------- Welcome form ---------- */
+
+.name-form label {
+  display: block;
+  font-weight: 600;
+  margin: 1.25rem 0 0.4rem;
+}
+
+input[type="text"],
+select {
+  font: inherit;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid #d9d2c5;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--green);
+}
+
+#name-input {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* ---------- Ornament progress ---------- */
+
+.ornaments {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.ornament {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  margin-top: 8px;
+  border-radius: 50%;
+  border: 2px solid #c9c2b5;
+  background: radial-gradient(circle at 35% 30%, #fff 0 10%, #f1ece3 40%, #ddd5c7);
+  color: #6b6458;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* little gold cap on top of each ornament */
+.ornament::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 12px;
+  height: 7px;
+  transform: translateX(-50%);
+  background: #d4a017;
+  border-radius: 3px 3px 0 0;
+}
+
+.ornament.filled {
+  border-color: var(--green-dark);
+  background: radial-gradient(circle at 35% 30%, #9be0b0 0 10%, #2e8049 45%, var(--green-dark));
+  color: #fff;
+}
+
+.ornament.current {
+  border-color: var(--red-dark);
+  background: radial-gradient(circle at 35% 30%, #ffb3b8 0 10%, #d33a43 45%, var(--red-dark));
+  color: #fff;
+  transform: scale(1.12);
+}
+
+/* ---------- Busy blocks ---------- */
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.empty {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  color: var(--green);
+  background: #f3f8f4;
+  border-radius: 12px;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border: 2px solid #ece6db;
+  border-left: 6px solid var(--green);
+  border-radius: 12px;
+  background: #fffdf9;
+}
+
+.block.overnight {
+  border-left-color: #3b4a8c;
+}
+
+.block.invalid {
+  border-color: var(--red);
+  background: #fff5f5;
+}
+
+.block-label {
+  min-width: 0;
+  width: 100%;
+}
+
+.block-times {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.to {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #f4ecec;
+  color: var(--red);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: #f2d4d6;
+}
+
+.block-status {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.block.invalid .block-status {
+  color: var(--red-dark);
+  font-weight: 600;
+}
+
+.block.overnight .block-status {
+  color: #3b4a8c;
+}
+
+.status-actions {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.carry {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  background: #eef0fa;
+  color: #3b4a8c;
+  font-size: 0.95rem;
+}
+
+/* ---------- Review ---------- */
+
+.week-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.week-day {
+  padding: 0.75rem 1rem;
+  border: 2px solid #ece6db;
+  border-left: 6px solid var(--red);
+  border-radius: 12px;
+}
+
+.week-day:nth-child(even) {
+  border-left-color: var(--green);
+}
+
+.week-day-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.week-day h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+}
+
+.busy-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.busy-list li {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.15rem 0;
+}
+
+.busy-time {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.busy-label {
+  color: #5c5c5c;
+}
+
+.free-all-day {
+  margin: 0;
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* ---------- Two people ---------- */
+
+:root {
+  --gold: #d4a017;
+  --gold-dark: #8a6508;
+}
+
+.person-tag {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  margin-right: 0.35rem;
+  border-radius: 999px;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.person-tag.p1 {
+  background: var(--red);
+}
+
+.person-tag.p2 {
+  background: var(--gold-dark);
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.handoff {
+  text-align: center;
+}
+
+.handoff .name-form {
+  text-align: left;
+}
+
+.handoff #name-input {
+  max-width: none;
+}
+
+.gift {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+/* ---------- Results ---------- */
+
+.container.wide {
+  max-width: 1000px;
+}
+
+.results-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.results-summary {
+  margin: 0.75rem 0 0;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1rem 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+}
+
+.swatch.free {
+  background: #bfe5c9;
+  border: 2px solid var(--green);
+}
+
+.swatch.p1 {
+  background: var(--red);
+}
+
+.swatch.p2 {
+  background: var(--gold);
+}
+
+.grid-scroll {
+  overflow-x: auto;
+  border: 2px solid #ece6db;
+  border-radius: 12px;
+  background: #fffdf9;
+}
+
+.week-grid {
+  min-width: 540px;
+  padding: 0.5rem 0.75rem 0.75rem 0;
+}
+
+.grid-head,
+.grid-body {
+  display: grid;
+  grid-template-columns: 52px repeat(7, 1fr);
+  gap: 6px;
+}
+
+.grid-day-name {
+  text-align: center;
+  font-weight: 700;
+  color: var(--red);
+  padding-bottom: 0.35rem;
+}
+
+.grid-axis {
+  position: relative;
+  font-size: 0.72rem;
+  color: #777;
+}
+
+.grid-axis span {
+  position: absolute;
+  right: 6px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.grid-axis span:first-child {
+  transform: none;
+}
+
+/* faint line every hour */
+.grid-day {
+  position: relative;
+  border-radius: 8px;
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #efe9de 1px, transparent 1px);
+  border: 1px solid #e6dfd2;
+  overflow: hidden;
+}
+
+.grid-free {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #bfe5c9;
+  border-top: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+}
+
+/* each person gets half the column */
+.grid-busy {
+  position: absolute;
+  width: calc(50% - 3px);
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 0.64rem;
+  font-weight: 600;
+  line-height: 1.15;
+  padding: 2px 3px;
+}
+
+.grid-busy.p1 {
+  left: 2px;
+  background: var(--red);
+  color: #fff;
+}
+
+.grid-busy.p2 {
+  right: 2px;
+  background: var(--gold);
+  color: #3a2a00;
+}
+
+/* break between words only; cut off anything that still doesn't fit */
+.grid-busy span {
+  display: block;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.section-title {
+  margin: 1.5rem 0 0;
+  color: var(--green);
+}
+
+.week-day.free-day {
+  border-left-color: var(--green);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 560px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .block {
+    grid-template-columns: 1fr auto;
+  }
+
+  .block-label {
+    grid-column: 1 / -1;
+  }
+
+  .ornament {
+    width: 36px;
+    height: 36px;
+  }
+}
